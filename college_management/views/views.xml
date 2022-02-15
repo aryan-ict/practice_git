@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="sample_button_d" type="object" string="Sample Button" class="btn-primary"/>
+                        <button name="college_management.action_window" type="action" string="Sample Button" class="btn-primary"/>
                     </header>
                     <sheet>
                         <group>
@@ -57,7 +57,7 @@
                 "type": "ir.actions.act_window",
                 "view_mode": "tree,form,kanban",
                 "res_model": model._name,
-                "name":"College List"
+                "name":"College Server List"
                 }
             </field>
         </record>
@@ -73,8 +73,11 @@
 
 <!--        &lt;!&ndash; actions &ndash;&gt;-->
 
-        <menuitem name="List" id="college_management.menu_1_list" parent="college_management_menu_1"
+        <menuitem name="List" id="menu_1_list" parent="college_management_menu_1"
                   action="college_management_action_window"/>
+        <menuitem name="Form" id="menu_1_form" parent="college_management_menu_1"
+                  action="action_window"/>
+
         <menuitem name="Server to list" id="college_management" parent="college_management_menu_2"
                   action="college_management_action_server"/>
 

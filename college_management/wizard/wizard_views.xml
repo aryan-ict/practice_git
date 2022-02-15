@@ -9,6 +9,8 @@
                         <field name="name"/>
                         <field name="mobile"/>
                         <field name="address"/>
+                        <field name="upload"/>
+                        <field name="signature" widget="signature"/>
                     </group>
                     <footer>
                         <button name="submit_button" type="object" string="Submit" class="btn-primary"/>
@@ -27,20 +29,11 @@
             <field name="view_id" ref="form_wiard"/>
             <field name="view_mode">form</field>
             <field name="target">new</field>
+
         </record>
 
-        <!-- Top menu item &ndash;&gt;-->
 
-<!--        <menuitem name="college_management" id="college_management.menu_root"/>-->
 
-        <!-- menu catrgories -->
-
-<!--        <menuitem name="Menu 1" id="menu_1" parent="college_management.menu_root"/>-->
-
-        <!-- actions -->
-
-        <menuitem name="Form" id="menu_1_form" parent="college_management_menu_1"
-                  action="action_window"/>
 
 
     </data>
