@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="form_wiard">
+            <field name="name">college_management list</field>
+            <field name="model">college.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="mobile"/>
+                        <field name="address"/>
+                    </group>
+                    <footer>
+                        <button name="submit_button" type="object" string="Submit" class="btn-primary"/>
+                        <button name="cancel_button" type="object" string="Cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <!-- actions opening on views model -->
+
+        <record model="ir.actions.act_window" id="action_window">
+            <field name="name">Wizard window</field>
+            <field name="res_model">college.wizard</field>
+            <field name="view_id" ref="form_wiard"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Top menu item &ndash;&gt;-->
+
+<!--        <menuitem name="college_management" id="college_management.menu_root"/>-->
+
+        <!-- menu catrgories -->
+
+<!--        <menuitem name="Menu 1" id="menu_1" parent="college_management.menu_root"/>-->
+
+        <!-- actions -->
+
+        <menuitem name="Form" id="menu_1_form" parent="college_management_menu_1"
+                  action="action_window"/>
+
+
+    </data>
+</odoo>
+
+
+
+
