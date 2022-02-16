@@ -18,13 +18,28 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="custom_fields_list_2">
+            <field name="name">college_management list</field>
+            <field name="model">college_management.college_management</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="name"/>
+                    <field name="value"/>
+                    <field name="description"/>
+
+                </tree>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="college_management_form">
             <field name="name">college_management form</field>
             <field name="model">college_management.college_management</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="college_management.action_window" type="action" string="Sample Button" class="btn-primary"/>
+
+                        <button name="college_management.action_window" type="action" string="Sample Button" class="btn-info"/>
                     </header>
                     <sheet>
                         <group>
@@ -41,26 +56,35 @@
 
 
         <!-- actions opening views on models -->
+
         <record model="ir.actions.act_window" id="college_management_action_window">
             <field name="name">college_management window</field>
             <field name="res_model">college_management.college_management</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-<!--        &lt;!&ndash; server action to the one above &ndash;&gt;-->
-        <record model="ir.actions.server" id="college_management_action_server">
+        <record model="ir.actions.act_window" id="college_management_action_window_2">
+            <field name="name">college_management window</field>
+            <field name="res_model">college_management.college_management</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="custom_fields_list_2"/>
+        </record>
+
+
+        <!-- server action to the one above -->
+       <!-- <record model="ir.actions.server" id="college_management_action_server">
             <field name="name">College List</field>
             <field name="model_id" ref="model_college_management_college_management"/>
             <field name="state">code</field>
             <field name="code">
                 action = {
                 "type": "ir.actions.act_window",
-                "view_mode": "tree,form,kanban",
+                "view_mode": "tree,form",
                 "res_model": model._name,
                 "name":"College Server List"
                 }
             </field>
-        </record>
+        </record> -->
 
         <!--        &lt;!&ndash; Top menu item &ndash;&gt;-->
 
@@ -68,8 +92,9 @@
 
 <!--        &lt;!&ndash; menu categories &ndash;&gt;-->
 
-        <menuitem name="Menu 1" id="college_management_menu_1" parent="college_management_menu_root"/>
-        <menuitem name="Menu 2" id="college_management_menu_2" parent="college_management_menu_root"/>
+        <menuitem name="Department" id="college_management_menu_1" parent="college_management_menu_root"/>
+        <menuitem name="College" id="college_management_menu_2" parent="college_management_menu_root"/>
+         <menuitem name="Student" id="college_management_menu_2" parent="college_management_menu_root"/>
 
 <!--        &lt;!&ndash; actions &ndash;&gt;-->
 
@@ -79,7 +104,7 @@
                   action="action_window"/>
 
         <menuitem name="Server to list" id="college_management" parent="college_management_menu_2"
-                  action="college_management_action_server"/>
+                  action="college_management_action_window_2"/>
 
     </data>
 </odoo>
