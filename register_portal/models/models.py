@@ -18,7 +18,7 @@ class register_portal(models.Model):
     male = fields.Boolean()
     female = fields.Boolean()
     file_upload = fields.Binary()
-    country = fields.Many2one('res.users', string='country')
+    country = fields.Many2one('res.country', string='country')
     # city = fields.One2many('res.users', string='city')
     mobile = fields.Integer(string="Mobile")
 
