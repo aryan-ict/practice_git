@@ -27,6 +27,7 @@
                     <field name="name"/>
                     <field name="value"/>
                     <field name="description"/>
+                    <field name="status"/>
 
                 </tree>
             </field>
@@ -39,7 +40,10 @@
                 <form>
                     <header>
 
-                        <button name="college_management.action_window" type="action" string="Sample Button" class="btn-info"/>
+                        <button name="college_management.action_window" type="action" string="Sample Button"
+                                class="btn-info"/>
+                        <field name="status" widget="statusbar" options="{'clickable':'1'}"
+                               statusbar_visibl="draft,done,confirm"/>
                     </header>
                     <sheet>
                         <group>

@@ -6,11 +6,17 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-                        <field name="name"/>
+                        <field name="name" options="{'no_create_edit':'True'}"/>
                         <field name="mobile"/>
                         <field name="address"/>
+                        <field name="country" placeholder="Select Your Country" widget="selection"/>
+                        <field name="course" required="True" placeholder="Select Course Type"/>
                         <field name="upload"/>
+                        <field name="interests" widget="many2many_tags" placeholder="Select Your Interests"
+                               options="{'color_field': 'color'}"/>
                         <field name="signature" widget="signature"/>
+
+                        <field name="image" widget="image"/>
                     </group>
                     <footer>
                         <button name="submit_button" type="object" string="Submit" class="btn-primary"/>
