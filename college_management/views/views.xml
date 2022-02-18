@@ -24,10 +24,11 @@
             <field name="arch" type="xml">
                 <tree>
 
-                    <field name="name"/>
                     <field name="value"/>
+                    <field name="name"/>
                     <field name="description"/>
-                    <field name="status"/>
+                    <field name="status" widget="badge" decoration-success="status=='done'"
+                           decoration-info="status=='confirm'" decoration-warning="status=='cancelled'"/>
 
                 </tree>
             </field>
@@ -58,7 +59,34 @@
             </field>
         </record>
 
+        <record id="college_management_kanban" model="ir.ui.view">
+            <field name="name">college_management kanban</field>
+            <field name="model">college_management.college_management</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="value"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
 
+                            <div class="oe_kanban_global_click">
+
+                                <ul>
+                                    <li>
+                                        <field name="name"/>
+                                        <field name="status" widget="badge" decoration-success="status=='done'"
+                                               decoration-info="status=='confirm'"
+                                               decoration-warning="status=='cancelled'"/>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
         <!-- actions opening views on models -->
 
         <record model="ir.actions.act_window" id="college_management_action_window">
@@ -74,33 +102,42 @@
             <field name="view_id" ref="custom_fields_list_2"/>
         </record>
 
+        <record model="ir.actions.act_window" id="college_management_action_window_3">
+            <field name="name">college_management window</field>
+            <field name="res_model">college_management.college_management</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="view_id" ref="college_management_kanban"/>
+        </record>
+
+
 
         <!-- server action to the one above -->
-       <!-- <record model="ir.actions.server" id="college_management_action_server">
-            <field name="name">College List</field>
-            <field name="model_id" ref="model_college_management_college_management"/>
-            <field name="state">code</field>
-            <field name="code">
-                action = {
-                "type": "ir.actions.act_window",
-                "view_mode": "tree,form",
-                "res_model": model._name,
-                "name":"College Server List"
-                }
-            </field>
-        </record> -->
+        <!-- <record model="ir.actions.server" id="college_management_action_server">
+             <field name="name">College List</field>
+             <field name="model_id" ref="model_college_management_college_management"/>
+             <field name="state">code</field>
+             <field name="code">
+                 action = {
+                 "type": "ir.actions.act_window",
+                 "view_mode": "tree,form",
+                 "res_model": model._name,
+                 "name":"College Server List"
+                 }
+             </field>
+         </record> -->
 
         <!--        &lt;!&ndash; Top menu item &ndash;&gt;-->
 
-        <menuitem name="College Management" id="college_management_menu_root"/>
+        <menuitem name="College Management" id="college_management_menu_root"
+                  action="college_management_action_window_2"/>
 
-<!--        &lt;!&ndash; menu categories &ndash;&gt;-->
+        <!--        &lt;!&ndash; menu categories &ndash;&gt;-->
 
-        <menuitem name="Department" id="college_management_menu_1" parent="college_management_menu_root"/>
+        <menuitem name="Student" id="college_management_menu_1" parent="college_management_menu_root"/>
         <menuitem name="College" id="college_management_menu_2" parent="college_management_menu_root"/>
-         <menuitem name="Student" id="college_management_menu_2" parent="college_management_menu_root"/>
+        <menuitem name="Department" id="college_management_menu_3" parent="college_management_menu_root"/>
 
-<!--        &lt;!&ndash; actions &ndash;&gt;-->
+        <!--        &lt;!&ndash; actions &ndash;&gt;-->
 
         <menuitem name="List" id="menu_1_list" parent="college_management_menu_1"
                   action="college_management_action_window"/>
@@ -109,6 +146,9 @@
 
         <menuitem name="Server to list" id="college_management" parent="college_management_menu_2"
                   action="college_management_action_window_2"/>
+
+        <menuitem name="Overview" id="menu_3_view" parent="college_management_menu_3"
+                  action="college_management_action_window_3"/>
 
     </data>
 </odoo>

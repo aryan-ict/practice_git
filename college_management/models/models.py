@@ -12,8 +12,9 @@ class college_management(models.Model):
     description = fields.Text()
     select_type = fields.Selection([('option1', 'Graduation'), ('option2', 'Post Graduation')],string="Degree Type")
     dob = fields.Date(string="Date Of Birth")
-    status = fields.Selection([('O1', 'Draft'), ('O2', 'Confirm'), ('O3', 'Done'), ('O4', 'Cancelled')], default='O1',
+    status = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm'), ('done', 'Done'), ('cancelled', 'Cancelled')], default='draft',
                               string="Status")
+
 
     def sample_button_d(self):
         print("Sample Button")
