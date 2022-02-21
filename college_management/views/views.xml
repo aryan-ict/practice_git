@@ -24,10 +24,10 @@
             <field name="arch" type="xml">
                 <tree>
 
-                    <field name="value"/>
                     <field name="name"/>
+                    <field name="value"/>
                     <field name="description"/>
-                    <field name="status" widget="badge" decoration-success="status=='done'"
+                    <field name="status" widget="badge" decoration-success="status=='process'"
                            decoration-info="status=='confirm'" decoration-warning="status=='cancelled'"/>
 
                 </tree>
@@ -44,17 +44,23 @@
                         <button name="college_management.action_window" type="action" string="Sample Button"
                                 class="btn-info"/>
                         <field name="status" widget="statusbar" options="{'clickable':'1'}"
-                               statusbar_visibl="draft,done,confirm"/>
+                               statusbar_visibl="draft,process,confirm"/>
                     </header>
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="value"/>
+<!--                             <field name="payment"/>-->
                             <field name="description"/>
-                            <field name="select_type" widget="radio"/>
+                            <field name="select_type" widget="radio" options="{'horizontal':True}"/>
                             <field name="dob"/>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -75,7 +81,7 @@
                                 <ul>
                                     <li>
                                         <field name="name"/>
-                                        <field name="status" widget="badge" decoration-success="status=='done'"
+                                        <field name="status" widget="badge" decoration-success="status=='process'"
                                                decoration-info="status=='confirm'"
                                                decoration-warning="status=='cancelled'"/>
 
