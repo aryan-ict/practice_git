@@ -11,9 +11,10 @@ Description is about describing the model is about College Management.
 
 
 class college_management(models.Model):
-    _name = "college_management.college_management"
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _name = "college.management"
+
     '''Inherited models from base addons'''
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     _description = "College Management"
 
@@ -29,4 +30,5 @@ class college_management(models.Model):
 
     def sample_button_d(self):
         print("Sample Button")
+
     '''Simple function for creation of button which prints 'Sample Button' on the click of the button'''

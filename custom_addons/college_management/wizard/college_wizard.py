@@ -21,5 +21,4 @@ class College_Management(models.TransientModel):
     def submit_button(self):
         print("Submit Button")
 
-    def cancel_button(self):
-        print("Cancel Button")
+
