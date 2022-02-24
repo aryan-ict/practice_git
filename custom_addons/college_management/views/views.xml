@@ -9,9 +9,15 @@
                 <field name="name"/>
                 <field name="value"/>
                 <field name="description"/>
-                <field name="select_type"/>
-                <field name="dob"/>
+                <!-- Status field which contains status = badge with decoration color
+                     of with different keys assigned in status field -->
+                <field name="status"
+                       widget="badge"
+                       decoration-success="status=='process'"
+                       decoration-info="status=='confirm'"
+                       decoration-warning="status=='cancelled'"/>
             </tree>
+
         </field>
     </record>
 
@@ -26,13 +32,8 @@
                 <field name="name"/>
                 <field name="value"/>
                 <field name="description"/>
-                <!-- Status field which contains status = badge with decoration color
-                     of with different keys assigned in status field -->
-                <field name="status"
-                       widget="badge"
-                       decoration-success="status=='process'"
-                       decoration-info="status=='confirm'"
-                       decoration-warning="status=='cancelled'"/>
+                <field name="select_type"/>
+                <field name="dob"/>
             </tree>
         </field>
     </record>
@@ -48,8 +49,16 @@
                     <!-- Assigning the action to the Sample Button -->
                     <button name="%(action_window_open_wiz)d"
                             type="action"
-                            string="Sample Button"
-                            class="btn-info"/>
+                            string="Student Info"
+                            class="btn-primary"/>
+                    <button name="create_button"
+                            type="object"
+                            string="Create Name"
+                            class="btn-primary"/>
+                    <button name="write_button"
+                            type="object"
+                            string="Update Value"
+                            class="btn-primary"/>
                     <!-- Creating statusbar using widget, statusbar will be clickable and will show keys writen in status_visible attribute -->
                     <field name="status"
                            widget="statusbar"
@@ -159,25 +168,25 @@
 
     <!-- menu categories -->
 
-<!--    <menuitem name="Student" id="college.management_menu_1" parent="college.management_menu_root"/>-->
-<!--    <menuitem name="College" id="college.management_menu_2" parent="college.management_menu_root"/>-->
-<!--    <menuitem name="Department" id="college.management_menu_3" parent="college.management_menu_root"/>-->
-<!--    <menuitem name="Student Info" id="college.management_menu_4" parent="college.management_menu_root"/>-->
+    <menuitem name="Student" id="college_management_menu_1" parent="college_management_menu_root"/>
+    <menuitem name="College" id="college_management_menu_2" parent="college_management_menu_root"/>
+    <menuitem name="Department" id="college_management_menu_3" parent="college_management_menu_root"/>
+<!--    <menuitem name="Student Info" id="college_management_menu_4" parent="college_management_menu_root"/>-->
 
-<!--    &lt;!&ndash; actions &ndash;&gt;-->
+    <!-- actions -->
 
-<!--    <menuitem name="List" id="menu_1_list" parent="college.management_menu_1"-->
-<!--              action="college.management_action_window"/>-->
-<!--    <menuitem name="Form" id="menu_1_form" parent="college.management_menu_1"-->
-<!--              action="action_window"/>-->
+    <menuitem name="List" id="menu_1_list" parent="college_management_menu_1"
+              action="college_management_action_window"/>
+    <menuitem name="Form" id="menu_1_form" parent="college_management_menu_1"
+              action="action_window_open_wiz"/>
 
-    <menuitem name="Server to list"
-              id="menu_server_to_list"
-              action="college_management_action_window_2"/>
+<!--    <menuitem name="Server to list"-->
+<!--              id="menu_server_to_list"-->
+<!--              action="college_management_action_window_2"/>-->
 
-<!--    <menuitem name="Overview" id="menu_3_view" parent="college.management_menu_3"-->
-<!--              action="college.management_action_window_3"/>-->
+    <menuitem name="Department Form" id="menu_3_view" parent="college_management_menu_3"
+              action="college_management_action_window_3"/>
 
-<!--    <menuitem nam="Student Form" id="menu_4_student" parent="college.management_menu_4"-->
+<!--    <menuitem nam="Student Form" id="menu_4_student" parent="college_management_menu_4"-->
 <!--              action="student_form_action_window"/>-->
 </odoo>

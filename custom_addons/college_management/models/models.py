@@ -29,6 +29,23 @@ class college_management(models.Model):
         default='draft', string="Status")
 
     def sample_button_d(self):
-        print("Sample Button")
+        pass
 
-    '''Simple function for creation of button which prints 'Sample Button' on the click of the button'''
+    def create_button(self):
+        vals1 = {'name': 'Kavish',
+                 'value': '03'}
+        return self.create(vals1)
+
+    def write_button(self):
+        vals = {'name': 'Aryan',
+                'value': '02',
+                'description': 'Odoo Trainee',
+                'select_type': 'option1'
+                }
+        return self.write(vals)
+
+    _sql_constraints = [
+        ('uniq_name', 'UNIQUE(name)', "Name is already in the database."),
+    ]
+
+'''Simple function for creation of button which prints 'Sample Button' on the click of the button'''

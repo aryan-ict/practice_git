@@ -12,13 +12,8 @@
       <change beforePath="$PROJECT_DIR$/../college_management/wizard/college_wizard.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../college_management/wizard/wizard_views.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/college_management/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/security/ir.model.access.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/college_management/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/views/views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/wizard/college_wizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/wizard/college_wizard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/wizard/wizard_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/wizard/wizard_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/misc.xml" beforeDir="false" />
