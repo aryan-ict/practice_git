@@ -1,0 +1,50 @@
+<odoo>
+    <!-- List View of the module -->
+    <record model="ir.ui.view" id="smart_view_list">
+        <field name="name">tree.view.smart.view</field>
+        <field name="model">smart.view</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phone_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View of the module -->
+    <record model="ir.ui.view" id="smart_view_form">
+        <field name="name">view.form.smart.view</field>
+        <field name="model">smart.view</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button string="Records" type="object" name="smart_button"
+                              class="oe_stat_button" icon="fa-book"/>
+                        <button string="Detailed Form" type="action" name="%(college_management.action_window_open_wiz)d"
+                              class="oe_stat_button" icon="fa-external-link"/>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone_no"/>
+                        <field name="dob_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="smart_view_action_window">
+        <field name="name">Details</field>
+        <field name="res_model">smart.view</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="smart_view_action_window_2">
+        <field name="name">Form</field>
+        <field name="res_model">smart.view</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="smart_view_form"/>
+    </record>
+</odoo>
