@@ -7,6 +7,8 @@
             <tree>
                 <field name="name"/>
                 <field name="phone_no"/>
+                <field name="dob_id"/>
+                <field name="gender_id"/>
             </tree>
         </field>
     </record>
@@ -17,6 +19,15 @@
         <field name="model">smart.view</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="status_bar"
+                           widget="statusbar"
+                           options="{'clickable':'True'}"/>
+                    <button name="log_button"
+                            type="object"
+                            string="Log Button"
+                            class="btn-primary"/>
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button string="Records" type="object" name="smart_button"
@@ -25,14 +36,37 @@
                               class="oe_stat_button" icon="fa-external-link"/>
                     </div>
                     <group>
+                        <field name="write_uid"/>
                         <field name="name"/>
                         <field name="phone_no"/>
                         <field name="dob_id"/>
+                        <field name="gender_id" widget="radio" options="{'horizontal':'True'}"/>
+
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
+
+    <record id="smart_view_filter" model="ir.ui.view">
+        <field name="name">smart.view.search</field>
+        <field name="model">smart.view</field>
+        <field name="arch" type="xml">
+            <search string="Students">
+                <field name="name"/>
+                <field name="gender_id"/>
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender_id" context="{'group_by':'gender_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="smart_view_action_window">
@@ -47,4 +81,11 @@
         <field name="view_mode">form</field>
         <field name="view_id" ref="smart_view_form"/>
     </record>
+
+    <record id="smart_view_search_actions" model="ir.actions.act_window">
+            <field name="name">Default Filter</field>
+            <field name="res_model">smart.view</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{'search_default_gender_id': 'male'}</field>
+        </record>
 </odoo>

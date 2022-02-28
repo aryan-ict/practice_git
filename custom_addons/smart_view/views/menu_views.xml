@@ -14,4 +14,8 @@
               id="menu_1_form"
               parent="smart_view_menu_1"
               action="smart_view_action_window_2"/>
+    <menuitem name="Default Filter"
+              id="menu_1_default"
+              parent="smart_view_menu_1"
+              action="smart_view_search_actions"/>
 </odoo>
