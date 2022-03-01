@@ -41,6 +41,7 @@
                         <field name="phone_no"/>
                         <field name="dob_id"/>
                         <field name="gender_id" widget="radio" options="{'horizontal':'True'}"/>
+                        <field name="names_list"/>
 
                     </group>
                 </sheet>
@@ -60,9 +61,7 @@
             <search string="Students">
                 <field name="name"/>
                 <field name="gender_id"/>
-                <group expand="1" string="Group By">
-                    <filter string="Gender" name="gender_id" context="{'group_by':'gender_id'}"/>
-                </group>
+
             </search>
         </field>
     </record>

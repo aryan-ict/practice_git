@@ -16,24 +16,25 @@ class college_management(models.Model):
     '''Inherited models from base addons'''
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    _description = "College Management"
+    _description = "Model for College Management"
 
     '''Assigning different fields with different fields type.'''
     name = fields.Char(string="Name")
-    value = fields.Integer(string="Sr. Number")
+    mobile_no = fields.Char(string="Mobile Number")
     description = fields.Text()
-    select_type = fields.Selection([('option1', 'Graduation'), ('option2', 'Post Graduation')], string="Degree Type")
+    select_type = fields.Selection([('option1', 'Graduation'), ('option2', 'Post Graduation')], string="Degree Type",
+                                   tracking=True)
     dob = fields.Date(string="Date Of Birth")
     status = fields.Selection(
         [('draft', 'Draft'), ('process', 'In Process'), ('confirm', 'Confirm'), ('cancelled', 'Cancelled')],
-        default='draft', string="Status")
+        default='draft', string="Status", tracking=True)
 
     def sample_button_d(self):
         pass
 
     def create_button(self):
         vals1 = {'name': 'Kavish',
-                 'value': '03'}
+                 'value': '03'},
         return self.create(vals1)
 
     def write_button(self):
@@ -44,8 +45,6 @@ class college_management(models.Model):
                 }
         return self.write(vals)
 
-    _sql_constraints = [
-        ('uniq_name', 'UNIQUE(name)', "Name is already in the database."),
-    ]
-
+    def unlink_button(self):
+        self.unlink()
 '''Simple function for creation of button which prints 'Sample Button' on the click of the button'''

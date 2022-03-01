@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from datetime import datetime
 
 
 
@@ -12,12 +13,13 @@ class smart_view(models.Model):
     _description = "Model for Smart View"
 
     name = fields.Char(string="Name")
-    phone_no = fields.Char(string="Phone Number")
-    dob_id = fields.Date(string="Date Of Birth")
+    phone_no = fields.Char(string="Phone Number", related='names_list.mobile_no')
+    dob_id = fields.Datetime(string="Date Of Birth", default=fields.Datetime.now)
     gender_id = fields.Selection([('male', 'Male'), ('female', 'Female'), ('transgender', 'Transgender')],
                                  string="Gender", tracking=True)
     status_bar = fields.Selection([('apply', 'Applied'), ('wait', 'Waiting'), ('approve', 'Approved')], default="apply",
                                   tracking=True)
+    names_list = fields.Many2one('college.management', string="Name List")
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)', "Name is already in the database."),

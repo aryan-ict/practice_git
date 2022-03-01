@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="value"/>
+                <field name="mobile_no"/>
                 <field name="description"/>
                 <!-- Status field which contains status = badge with decoration color
                      of with different keys assigned in status field -->
@@ -30,7 +30,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="value"/>
+                <field name="mobile_no"/>
                 <field name="description"/>
                 <field name="select_type"/>
                 <field name="dob"/>
@@ -59,6 +59,10 @@
                             type="object"
                             string="Update Value"
                             class="btn-primary"/>
+                    <button name="unlink_button"
+                            type="object"
+                            string="Unlink Button"
+                            class="btn-primary"/>
                     <!-- Creating statusbar using widget, statusbar will be clickable and will show keys writen in status_visible attribute -->
                     <field name="status"
                            widget="statusbar"
@@ -68,13 +72,12 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="value"/>
+                        <field name="mobile_no"/>
                         <field name="description"/>
                         <!-- Creating radio button using radio widget -->
                         <field name="select_type" widget="radio"
                                options="{'horizontal':True}"/>
                         <field name="dob"/>
-<!--                        <field name="mobile_phone"/>-->
                     </group>
                 </sheet>
                 <div class="oe_chatter">

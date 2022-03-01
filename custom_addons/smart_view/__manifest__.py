@@ -18,6 +18,7 @@
     'depends': [
         'base',
         'mail',
+        'college_management',
     ],
     # always loaded
     'data': [
