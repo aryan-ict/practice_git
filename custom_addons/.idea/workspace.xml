@@ -12,11 +12,7 @@
       <change beforePath="$PROJECT_DIR$/../college_management/wizard/college_wizard.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../college_management/wizard/wizard_views.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/models/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/college_management/views/views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/college_management/views/views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smart_view/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/smart_view/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/smart_view/models/smart.py" beforeDir="false" afterPath="$PROJECT_DIR$/smart_view/models/smart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smart_view/views/smart_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/smart_view/views/smart_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../register_portal/.idea/misc.xml" beforeDir="false" />
@@ -65,7 +61,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/smart_view/security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
