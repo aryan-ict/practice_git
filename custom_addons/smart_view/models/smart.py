@@ -1,5 +1,5 @@
 """This module is for Smart View Tasks"""
-from odoo import models, fields
+from odoo import models, fields, api
 # from odoo.exceptions import ValidationError
 
 
@@ -12,11 +12,10 @@ class SmartView(models.Model):
     phone_no = fields.Char(string="Phone Number",
                            related='names_list.mobile_no')
     doc = fields.Datetime(string="Date Of Creation",
-                          default=fields.Datetime.now)
-    gender_id = fields.Selection([('male', 'Male'),
-                                  ('female', 'Female'),
-                                  ('transgender', 'Transgender')],
-                                 string="Gender", tracking=True)
+                          default=fields.Datetime.today)
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female'),
+                               ('transgender', 'Transgender')],
+                              string="Gender", tracking=True)
     status_bar = fields.Selection([('apply', 'Applied'),
                                    ('wait', 'Waiting'),
                                    ('approve', 'Approved')],
@@ -25,7 +24,8 @@ class SmartView(models.Model):
     names_list = fields.Many2one('college.management',
                                  string="Name List")
     first_page = fields.One2many('smart.view.otm', 'appointment_id',
-                                        string='Appointment Lines')
+                                 string='Appointment Lines')
+    checkbox = fields.Boolean(string='Checkbox', help='Tick the Checkbox')
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)', "Name is already in the database.")
@@ -33,7 +33,14 @@ class SmartView(models.Model):
 
     def smart_button(self):
         """This function is for smart button"""
-        return self
+        self.unlink()
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'type': 'rainbow_man',
+                'message': 'record updated'
+            }
+        }
 
     def log_button(self):
         """This function is for log button
@@ -45,6 +52,14 @@ class SmartView(models.Model):
         self.message_post(body="Phone number has been updated "
                                "and Gender has been changed")
         self.write(up_vals)
+
+    @api.model
+    def create(self, vals):
+        """Function for create button using super function."""
+        res = super(SmartView, self).create(vals)
+        print("self----",self,"res----",res,"vals----",vals)
+        return res
+
 
     # @api.constrains('name')
     # def check_name(self):
@@ -68,3 +83,25 @@ class SmartViewOtm(models.Model):
     product_qty = fields.Integer(string='Product Quantity')
     appointment_id = fields.Many2one('smart.view', string='Appointment ID')
     test_list = fields.Many2one('smart.view.otm', string='Test')
+
+    def test(self):
+        """Simple test function"""
+        self.unlink()
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'type': 'rainbow_man',
+                'message': 'record updated'
+            }
+        }
+
+    def test1(self):
+        """Simple test function"""
+        self.unlink()
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'type': 'rainbow_man',
+                'message': 'record updated'
+            }
+        }
