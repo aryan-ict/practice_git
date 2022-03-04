@@ -1,5 +1,7 @@
 """This module is for Smart View Tasks"""
 from odoo import models, fields, api
+
+
 # from odoo.exceptions import ValidationError
 
 
@@ -8,11 +10,15 @@ class SmartView(models.Model):
     _name = "smart.view"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Model for Smart View"
+
     name = fields.Char(string="Name")
+    email = fields.Char(string="Email", help="Enter your Email ID")
     phone_no = fields.Char(string="Phone Number",
                            related='names_list.mobile_no')
     doc = fields.Datetime(string="Date Of Creation",
                           default=fields.Datetime.today)
+    rating = fields.Selection([('bad', 'Bad'), ('good', 'Good'), ('best', 'Best'),
+                               ('excellent', 'excellent')], string='Rate Us')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'),
                                ('transgender', 'Transgender')],
                               string="Gender", tracking=True)
@@ -25,7 +31,7 @@ class SmartView(models.Model):
                                  string="Name List")
     first_page = fields.One2many('smart.view.otm', 'appointment_id',
                                  string='Appointment Lines')
-    checkbox = fields.Boolean(string='Checkbox', help='Tick the Checkbox')
+    checkbox = fields.Boolean(string='Confirmed', help='Tick the Checkbox')
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)', "Name is already in the database.")
@@ -48,30 +54,50 @@ class SmartView(models.Model):
         of the button and updates values.
         """
         up_vals = {'phone_no': '7575076690',
-                   'gender_id': 'male'}
+                   'gender': 'male'}
         self.message_post(body="Phone number has been updated "
                                "and Gender has been changed")
         self.write(up_vals)
 
     @api.model
     def create(self, vals):
-        """Function for create button using super function."""
+        """Function for Create button and overriding using super function.
+        When status of record is approve then checkbox will be checked.
+        """
         res = super(SmartView, self).create(vals)
-        print("self----",self,"res----",res,"vals----",vals)
+        print("res : ", res, "self", self, "vals", vals)
+        if vals.get('status_bar') == 'approve':
+            res['checkbox'] = 'True'
+            print("Checkbox checked", res['checkbox'])
         return res
 
+    def write(self, vals):
+        """Function for Edit button and overriding using super function."""
+        res = super(SmartView, self).write(vals)
+        print("res : ", res, "self", self, "vals", vals)
+        if vals.get('status_bar') == 'approve':
+            self['checkbox'] = 'True'
+            print("Checkbox checked", self['checkbox'])
+        return res
 
-    # @api.constrains('name')
-    # def check_name(self):
-    #     for rec in self:
-    #         if rec.name.isalpha() == False:
-    #             raise ValidationError("Name must contain only alphabets")
+    def search_button(self):
+        search_var = self.search([])
+        print("search----", search_var)
+        for rec in search_var:
+            print("full_name---------------",rec.name)
 
-    # @api.constrains('phone_no')
-    # def check_number(self):
-    #     for record in self:
-    #         if len(record.phone_no) > 10 or len(record.phone_no) < 10:
-    #             raise ValidationError("The number must be 10 digits long")
+
+# @api.constrains('name')
+# def check_name(self):
+#     for rec in self:
+#         if rec.name.isalpha() == False:
+#             raise ValidationError("Name must contain only alphabets")
+
+# @api.constrains('phone_no')
+# def check_number(self):
+#     for record in self:
+#         if len(record.phone_no) > 10 or len(record.phone_no) < 10:
+#             raise ValidationError("The number must be 10 digits long")
 
 
 class SmartViewOtm(models.Model):
@@ -86,22 +112,8 @@ class SmartViewOtm(models.Model):
 
     def test(self):
         """Simple test function"""
-        self.unlink()
-        return {
-            'effect': {
-                'fadeout': 'slow',
-                'type': 'rainbow_man',
-                'message': 'record updated'
-            }
-        }
+        return self
 
     def test1(self):
         """Simple test function"""
-        self.unlink()
-        return {
-            'effect': {
-                'fadeout': 'slow',
-                'type': 'rainbow_man',
-                'message': 'record updated'
-            }
-        }
+        return self

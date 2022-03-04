@@ -27,6 +27,10 @@
                             type="object"
                             string="Log Button"
                             class="btn-primary"/>
+                    <button name="search_button"
+                            type="object"
+                            string="Search"
+                            class="btn-primary"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -39,11 +43,13 @@
                     <group>
                         <field name="write_uid"/>
                         <field name="name"/>
-                        <field name="phone_no"/>
+                        <field name="email" widget="email"/>
+                        <field name="phone_no" widget="phone"/>
                         <field name="doc" readonly="1"/>
                         <field name="gender" widget="radio" options="{'horizontal':'True'}"/>
                         <field name="names_list"/>
                         <field name="checkbox"/>
+                        <field name="rating" widget="priority"/>
                         <notebook>
                             <page string="First Page" name="first_page">
                                 <field name="first_page">
